@@ -33,15 +33,17 @@ from torch_geometric.utils._scatter import scatter_argmax
 from sklearn.metrics import average_precision_score, roc_auc_score, f1_score, recall_score
 
 
-### Borrowed code from https://github.com/pyg-team/pytorch_geometric/blob/master/examples/tgn.py
+### CREDIT: Code borrows from Torch-Geometric: https://github.com/pyg-team/pytorch_geometric
 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Add argument parser
-parser = argparse.ArgumentParser(description="Train TGN model with specified dataset")
+parser = argparse.ArgumentParser(description="ConceptDrift")
+
+# ConceptDrift uses the default hyperparameters:
 parser.add_argument("--dataset", type=str, required=True, help="Dataset to use ('immunology', 'virology', 'neurology')")
-parser.add_argument("--aggregator", type=str, required=False, default="last", help="Aggregator to use ('last', 'mean', 'attn')")
+parser.add_argument("--aggregator", type=str, required=False, default="last", help="Aggregator to use ('last', 'mean', 'attn')") 
 parser.add_argument("--messenger", type=str, required=False, default="concat", help="Message Module to use ('concat', 'moe')")
 parser.add_argument("--dropout", type=float, required=False, default=0.1, help="Float value for dropout (e.g. 0.3)")
 parser.add_argument("--batch_size", type=int, required=False, default=200, help="Batch Size")

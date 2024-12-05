@@ -9,7 +9,7 @@ from torch_geometric.nn.inits import zeros
 from torch_geometric.utils import scatter
 from torch_geometric.utils._scatter import scatter_argmax
 
-### Borrowed code from: https://pytorch-geometric.readthedocs.io/en/2.5.1/_modules/torch_geometric/nn/models/tgn.html
+### CREDIT: Code is borrows from Torch-Geometric: https://github.com/pyg-team/pytorch_geometric
 
 from .cross_attn_agg import CrossAttentionAggregator
 # from .moe_messg_pass import MoEMessage

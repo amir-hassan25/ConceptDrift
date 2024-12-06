@@ -35,7 +35,6 @@ from sklearn.metrics import average_precision_score, roc_auc_score, f1_score, re
 
 ### CREDIT: Code borrows from Torch-Geometric: https://github.com/pyg-team/pytorch_geometric
 
-
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Add argument parser

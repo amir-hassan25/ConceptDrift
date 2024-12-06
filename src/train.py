@@ -89,7 +89,6 @@ with open(graph_path, 'rb') as f:
 
 node_feat_path = node_feat_paths[args.dataset]
 # Assuming `node_features` is a tensor of size [num_nodes, 768]
-# node_features = torch.load(f'/scratch/ahs5ce/PubTator3/temporal_cooc_graphs/mesh_node_embeddings/biobert_{args.dataset}.pt').to(device)
 node_features = torch.load(node_feat_path).to(device)
 
 print(f'loaded node features from {node_feat_path}')

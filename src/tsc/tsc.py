@@ -9,10 +9,9 @@ from torch_geometric.nn.inits import zeros
 from torch_geometric.utils import scatter
 from torch_geometric.utils._scatter import scatter_argmax
 
-### CREDIT: Code is borrows from Torch-Geometric: https://github.com/pyg-team/pytorch_geometric
+### CREDIT: Code is borrows from Torch-Geometric and TGN: https://github.com/pyg-team/pytorch_geometric
 
 from .cross_attn_agg import CrossAttentionAggregator
-# from .moe_messg_pass import MoEMessage
 
 TGNMessageStoreType = Dict[int, Tuple[Tensor, Tensor, Tensor, Tensor]]
 
@@ -34,10 +33,6 @@ class TemporalSemanticContextualization(torch.nn.Module):
         self.aggr_module = aggregator_module
         self.time_enc = TimeEncoder(time_dim)
         self.gru = GRUCell(message_module.out_channels, memory_dim)
-        # if preserve_semantics:  
-        #     self.gru = GRUCell((message_module.out_channels + 768), memory_dim)
-        # else:
-        #     self.gru = GRUCell(message_module.out_channels, memory_dim)
 
 
         self.register_buffer('memory', torch.empty(num_nodes, memory_dim))
@@ -120,25 +115,7 @@ class TemporalSemanticContextualization(torch.nn.Module):
             aggr = self.aggr_module(self.memory[n_id], msg, self._assoc[idx], t, n_id.size(0))
         else:
             aggr = self.aggr_module(msg, self._assoc[idx], t, n_id.size(0))
-        # print(aggr)
-        # print("Node Size: ", self.memory[n_id].shape)
-        # print("Aggr Size: ", aggr.shape)
 
-        # If we want to preserve original semantic meaning of the node before the memory is updated, 
-        # we concat the original semantic embedding of the nodes' biomedical MeSH term.
-        # if self.preserve_semantics:
-        #     original_dim = self.node_features.size(1)
-        #     aggr_dim = aggr.size(1)
-
-        #     # Project `original_embeddings` to the dimensionality of `aggr`
-        #     if original_dim != aggr_dim:
-        #         projection_layer = torch.nn.Linear(original_dim, aggr_dim).to(self.device)
-        #         original_embeddings = projection_layer(self.node_features[n_id])
-
-        #     # Now you can average them
-        #     aggr = (aggr + original_embeddings) / 2
-
-            # aggr = (aggr + original_embeddings) / 2
         memory = self.gru(aggr, self.memory[n_id])
 
         dim_size = self.last_update.size(0)

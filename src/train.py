@@ -43,8 +43,8 @@ parser = argparse.ArgumentParser(description="ConceptDrift")
 
 # ConceptDrift uses the default hyperparameters:
 parser.add_argument("--dataset", type=str, required=True, help="Dataset to use ('immunology', 'virology', 'neurology')")
-parser.add_argument("--aggregator", type=str, required=False, default="last", help="Aggregator to use ('last', 'mean', 'attn')") 
-parser.add_argument("--messenger", type=str, required=False, default="concat", help="Message Module to use ('concat', 'moe')")
+parser.add_argument("--aggregator", type=str, required=False, default="last", help="Batch processing logic to use ('last', 'mean', 'attn')")  ### This is specific for batch processing logic borrowed from a TGN. ConceptDrift uses 'last'.
+parser.add_argument("--messenger", type=str, required=False, default="concat", help="Message Module to use ('concat', 'moe')") ### Concatonate for Context Aggregation Function. 
 parser.add_argument("--dropout", type=float, required=False, default=0.1, help="Float value for dropout (e.g. 0.3)")
 parser.add_argument("--batch_size", type=int, required=False, default=200, help="Batch Size")
 parser.add_argument("--max_epochs", type=int, required=False, default=2, help="Batch Size")
@@ -171,7 +171,7 @@ messengers = {
 message_module=messengers[args.messenger]
 print("ID MESSAGE OUT CHANNELS: ", message_module.out_channels)
 
-# Choose Aggregator 
+# Batch processing logic. ConceptDrift uses 'last'. 
 aggregators = {
     "last": LastAggregator(),
     "mean": MeanAggregator(),

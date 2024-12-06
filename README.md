@@ -18,5 +18,5 @@ Our temporal dynamic graphs are stored as Torch-Geometric [TemporalData](https:/
 1. To train ConceptDrift, activate your environment with the necessary packages and go to the `src` folder.
 2. Execute `python train.py --dataset {dataset}` to train on the `virology`, `neurology`, or `neurology` dataset. 
 
-You can modify hyperparameters by exploring the command line arguments in  `src/train.py`.
+Hyperparmaters can be adjusted with the following command line arguments:  `--batch_size ` (default is 200), `--max_epochs` (default is 2), and `--lr` (default is 0.0001).
 

@@ -1,3 +1,12 @@
+# ConceptDrift Data and Code
+This respository holds the virology, neurology, and immunology datasets along with the implementation of ConceptDrift. 
+
+## Data
+
+Use [Git-LFS](https://git-lfs.com/) to ensure data.zip is downloaded. Please unzip `data.zip` in the project directory. You should have a directory named `data` in the project directory. 
+
+Our temporal dynamic graphs are stored as Torch-Geometric [TemporalData](https://pytorch-geometric.readthedocs.io/en/2.5.0/generated/torch_geometric.data.TemporalData.html) objects. You can find a pickle files holding the datasets along with mappings from the node ids to MeSH Terms in the `data/{dataset}` folders. The biobert embeddings for the terms are also provided in the `data/{dataset}` folders. 
+
 ## System 
 
 To ensure optimal performance and compatibility, your system should meet the following requirements:

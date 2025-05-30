@@ -1,5 +1,6 @@
-# ConceptDrift Data and Code
-This respository holds the virology, neurology, and immunology datasets along with the implementation of ConceptDrift. 
+![Main Figure](ConceptDriftNetMainFigure.png)
+
+This repository holds the virology, neurology, and immunology datasets along with the implementation of ConceptDrift. 
 
 ## Data
 

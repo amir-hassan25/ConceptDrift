@@ -1,6 +1,10 @@
+
+# ConceptDrift 
 ![Main Figure](ConceptDriftNetMainFigure.png)
 
-This repository holds the virology, neurology, and immunology datasets along with the implementation of ConceptDrift. 
+> We introduce a novel framework, _ConceptDrift_, that models the hypothesis generation task as a sequence of temporal graphlets and simultaneously encodes spatial, temporal, and semantic change. Unlike existing approaches that treat these dimensions independently, _ConceptDrift_ is the first to provide a holistic understanding of concept evolution by integrating them into a unified framework. Grounded in the theories of the Distributional Hypothesis and Conceptual Change, our method adapts these principles to the unique challenges of large-scale biomedical literature. We conduct extensive experiments across multiple datasets and  demonstrate that _ConceptDrift_ consistently outperforms state-of-the-art baselines in generating accurate and meaningful hypotheses. Our framework shows immediate practical benefits for web-based literature mining tools in life sciences and biomedicine, offering more robust and predictive feature representations.
+
+- This repository holds the virology, neurology, and immunology datasets along with the implementation of ConceptDrift. 
 
 ## Data
 
